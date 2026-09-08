@@ -5,10 +5,8 @@ from __future__ import annotations
 from typing import Optional
 from typing_extensions import TypedDict
 
-__all__ = ["JobGetParams"]
+__all__ = ["PipelineDeleteParams"]
 
 
-class JobGetParams(TypedDict, total=False):
-    organization_id: Optional[str]
-
+class PipelineDeleteParams(TypedDict, total=False):
     project_id: Optional[str]
