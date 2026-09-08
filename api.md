@@ -101,6 +101,7 @@ from llama_cloud.types import (
     TextItem,
     ParsingCreateResponse,
     ParsingListResponse,
+    ParsingDeleteResponse,
     ParsingCancelResponse,
     ParsingGetResponse,
     ParsingListVersionsResponse,
@@ -111,6 +112,7 @@ Methods:
 
 - <code title="post /api/v2/parse">client.parsing.<a href="./src/llama_cloud/resources/parsing.py">create</a>(\*\*<a href="src/llama_cloud/types/parsing_create_params.py">params</a>) -> <a href="./src/llama_cloud/types/parsing_create_response.py">ParsingCreateResponse</a></code>
 - <code title="get /api/v2/parse">client.parsing.<a href="./src/llama_cloud/resources/parsing.py">list</a>(\*\*<a href="src/llama_cloud/types/parsing_list_params.py">params</a>) -> <a href="./src/llama_cloud/types/parsing_list_response.py">SyncPaginatedCursor[ParsingListResponse]</a></code>
+- <code title="delete /api/v2/parse/{job_id}">client.parsing.<a href="./src/llama_cloud/resources/parsing.py">delete</a>(job_id, \*\*<a href="src/llama_cloud/types/parsing_delete_params.py">params</a>) -> <a href="./src/llama_cloud/types/parsing_delete_response.py">ParsingDeleteResponse</a></code>
 - <code title="post /api/v2/parse/{job_id}/cancel">client.parsing.<a href="./src/llama_cloud/resources/parsing.py">cancel</a>(job_id, \*\*<a href="src/llama_cloud/types/parsing_cancel_params.py">params</a>) -> <a href="./src/llama_cloud/types/parsing_cancel_response.py">ParsingCancelResponse</a></code>
 - <code title="get /api/v2/parse/{job_id}">client.parsing.<a href="./src/llama_cloud/resources/parsing.py">get</a>(job_id, \*\*<a href="src/llama_cloud/types/parsing_get_params.py">params</a>) -> <a href="./src/llama_cloud/types/parsing_get_response.py">ParsingGetResponse</a></code>
 - <code title="get /api/v2/parse/versions">client.parsing.<a href="./src/llama_cloud/resources/parsing.py">list_versions</a>() -> <a href="./src/llama_cloud/types/parsing_list_versions_response.py">ParsingListVersionsResponse</a></code>
@@ -346,6 +348,7 @@ from llama_cloud.types import (
     VertexTextEmbedding,
     PipelineRetrieveResponse,
     PipelineListResponse,
+    PipelineListPaginatedResponse,
 )
 ```
 
@@ -358,6 +361,7 @@ Methods:
 - <code title="delete /api/v1/pipelines/{pipeline_id}">client.pipelines.<a href="./src/llama_cloud/resources/pipelines/pipelines.py">delete</a>(pipeline_id, \*\*<a href="src/llama_cloud/types/pipeline_delete_params.py">params</a>) -> None</code>
 - <code title="get /api/v1/pipelines/{pipeline_id}">client.pipelines.<a href="./src/llama_cloud/resources/pipelines/pipelines.py">get</a>(pipeline_id, \*\*<a href="src/llama_cloud/types/pipeline_get_params.py">params</a>) -> <a href="./src/llama_cloud/types/pipeline.py">Pipeline</a></code>
 - <code title="get /api/v1/pipelines/{pipeline_id}/status">client.pipelines.<a href="./src/llama_cloud/resources/pipelines/pipelines.py">get_status</a>(pipeline_id, \*\*<a href="src/llama_cloud/types/pipeline_get_status_params.py">params</a>) -> <a href="./src/llama_cloud/types/managed_ingestion_status_response.py">ManagedIngestionStatusResponse</a></code>
+- <code title="get /api/v2/pipelines">client.pipelines.<a href="./src/llama_cloud/resources/pipelines/pipelines.py">list_paginated</a>(\*\*<a href="src/llama_cloud/types/pipeline_list_paginated_params.py">params</a>) -> <a href="./src/llama_cloud/types/pipeline_list_paginated_response.py">SyncPaginatedCursor[PipelineListPaginatedResponse]</a></code>
 - <code title="put /api/v1/pipelines">client.pipelines.<a href="./src/llama_cloud/resources/pipelines/pipelines.py">upsert</a>(\*\*<a href="src/llama_cloud/types/pipeline_upsert_params.py">params</a>) -> <a href="./src/llama_cloud/types/pipeline.py">Pipeline</a></code>
 
 ## Sync

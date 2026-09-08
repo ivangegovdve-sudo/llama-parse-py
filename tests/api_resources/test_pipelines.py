@@ -13,8 +13,10 @@ from llama_cloud.types import (
     Pipeline,
     PipelineListResponse,
     PipelineRetrieveResponse,
+    PipelineListPaginatedResponse,
     ManagedIngestionStatusResponse,
 )
+from llama_cloud.pagination import SyncPaginatedCursor, AsyncPaginatedCursor
 
 # pyright: reportDeprecated=false
 
@@ -839,6 +841,47 @@ class TestPipelines:
                 client.pipelines.with_raw_response.get_status(
                     pipeline_id="",
                 )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_paginated(self, client: LlamaCloud) -> None:
+        pipeline = client.pipelines.list_paginated()
+        assert_matches_type(SyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_paginated_with_all_params(self, client: LlamaCloud) -> None:
+        pipeline = client.pipelines.list_paginated(
+            name="name",
+            organization_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            page_size=0,
+            page_token="page_token",
+            pipeline_type="MANAGED",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(SyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list_paginated(self, client: LlamaCloud) -> None:
+        response = client.pipelines.with_raw_response.list_paginated()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        pipeline = response.parse()
+        assert_matches_type(SyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list_paginated(self, client: LlamaCloud) -> None:
+        with client.pipelines.with_streaming_response.list_paginated() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            pipeline = response.parse()
+            assert_matches_type(SyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1911,6 +1954,47 @@ class TestAsyncPipelines:
                 await async_client.pipelines.with_raw_response.get_status(
                     pipeline_id="",
                 )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_paginated(self, async_client: AsyncLlamaCloud) -> None:
+        pipeline = await async_client.pipelines.list_paginated()
+        assert_matches_type(AsyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_paginated_with_all_params(self, async_client: AsyncLlamaCloud) -> None:
+        pipeline = await async_client.pipelines.list_paginated(
+            name="name",
+            organization_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            page_size=0,
+            page_token="page_token",
+            pipeline_type="MANAGED",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(AsyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list_paginated(self, async_client: AsyncLlamaCloud) -> None:
+        response = await async_client.pipelines.with_raw_response.list_paginated()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        pipeline = await response.parse()
+        assert_matches_type(AsyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list_paginated(self, async_client: AsyncLlamaCloud) -> None:
+        async with async_client.pipelines.with_streaming_response.list_paginated() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            pipeline = await response.parse()
+            assert_matches_type(AsyncPaginatedCursor[PipelineListPaginatedResponse], pipeline, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
